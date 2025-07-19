@@ -53,14 +53,6 @@
 
 ## 🏗️ Архитектура
 
-```mermaid
-graph TD
-    A[Telegram Bot] -->|API| B[FastAPI Server]
-    B --> C[(Database)]
-    D[Admin Panel] --> B
-    E[Mobile App] --> B
-```
-
 1. **Telegram Bot** - основной интерфейс для доноров
 2. **FastAPI Server** - backend система
 3. **SQLite Database** - хранение данных
@@ -74,7 +66,6 @@ graph TD
 - Python 3.10
 - FastAPI
 - SQLAlchemy
-- Alembic (миграции)
 - Telebot (python-telegram-bot)
 
 ### Frontend:
@@ -85,11 +76,6 @@ graph TD
 ### База данных:
 - SQLite (для разработки)
 - PostgreSQL (для продакшена)
-
-### Инфраструктура:
-- Docker
-- Nginx
-- GitHub Actions (CI/CD)
 
 ---
 
@@ -102,31 +88,12 @@ graph TD
 
 ### Установка:
 
-1. Клонируйте репозиторий:
-```bash
-git clone https://github.com/yourusername/donorbot.git
-cd donorbot
-```
-
-2. Установите зависимости:
+Установите зависимости:
 ```bash
 python -m venv venv
 source venv/bin/activate  # Linux/MacOS
 venv\Scripts\activate  # Windows
 pip install -r requirements.txt
-```
-
-3. Настройте окружение:
-Создайте файл `.env` в корне проекта:
-```ini
-BOT_TOKEN=your_telegram_bot_token
-DATABASE_URL=sqlite:///donor.db
-ADMIN_IDS=123456789,987654321
-```
-
-4. Инициализируйте базу данных:
-```bash
-python init_db.py
 ```
 
 ### Запуск:
@@ -220,32 +187,11 @@ MEPHI_Donor_DevSquad/
 
 ---
 
-## 🤝 Вклад в проект
-
-Мы приветствуем вклад в проект! Вот как вы можете помочь:
-
-1. Форкните репозиторий
-2. Создайте ветку для вашей фичи (`git checkout -b feature/amazing-feature`)
-3. Сделайте коммит ваших изменений (`git commit -m 'Add some amazing feature'`)
-4. Запушьте в ветку (`git push origin feature/amazing-feature`)
-5. Откройте Pull Request
-
----
-
-## 📄 Лицензия
-
-Этот проект распространяется под лицензией MIT. См. файл `LICENSE` для подробностей.
-
----
-
 ## 👨‍💻 Команда
 
-- **Иван Иванов** - Team Lead, Backend Developer
-- **Петр Петров** - Frontend Developer
-- **Сергей Сергеев** - UX/UI Designer
-- **Анна Аннова** - Data Analyst
-
-Свяжитесь с нами: team@donorbot.ru
+- **Попов Иван** - Team Lead, Fullstack Developer
+- **Никифоров Данила** - Frontend Developer
+- **Пятковский Артём** - Backend Designer
 
 ---
 
