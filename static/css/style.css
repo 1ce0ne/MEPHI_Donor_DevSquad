@@ -1,0 +1,575 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter/Inter-Regular.otf');
+}
+
+* {
+    font-family: 'Inter';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --grey: #949494;
+    --blue: #0095FF;
+    --darkblue: #0555e9;
+    --green: #66C85D;
+    --darkgreen: #4CAF50;
+    --red: #FF4D4D;
+    --orange: #FFA500;
+}
+
+html, body, main {
+    height: 100%;
+}
+
+nav, .content {
+    float: left;
+}
+
+nav {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 0.05em solid var(--grey);
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.content {
+    width: 80%;
+    padding: 20px;
+}
+
+.nav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.nav h1 {
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: var(--blue);
+}
+
+.container {
+    margin: 0%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+ul {
+    margin-top: 5%;
+    margin-bottom: 2%;
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+}
+
+li {
+    height: 50px;
+    width: 100%;
+    border-radius: 0.4em;
+}
+
+li a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding-left: 15px;
+    text-decoration: none;
+    color: #000;
+    border-radius: 0.4em;
+    transition: all 0.3s ease;
+}
+
+li a:hover {
+    background-color: var(--blue);
+    color: white;
+}
+
+hr {
+    color: #000;
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* Основной контент */
+.content h1 {
+    margin-bottom: 20px;
+    color: var(--blue);
+}
+
+/* Таблицы */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--grey);
+}
+
+th {
+    background-color: var(--green);
+    color: white;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Кнопки */
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--blue);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--darkblue);
+}
+
+.btn-danger {
+    background-color: var(--red);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #cc0000;
+}
+
+.btn-success {
+    background-color: var(--green);
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: var(--darkgreen);
+}
+
+/* Формы */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--grey);
+    border-radius: 4px;
+}
+
+/* Карточки */
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-top: 0;
+    color: var(--blue);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    nav {
+        width: 30%;
+    }
+
+    .content {
+        width: 70%;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+/* Стили для выпадающих блоков */
+.details-row {
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.donor-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.donor-info {
+    margin-top: 10px;
+}
+
+.donor-info p {
+    margin-bottom: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.donor-info p:last-child {
+    border-bottom: none;
+}
+
+/* Стили для модального окна */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    animation: modalopen 0.3s;
+}
+
+@keyframes modalopen {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+/* Стили для формы */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-actions {
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* Стили для выбора даты */
+input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Стили для файлового ввода */
+input[type="file"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 4px;
+}
+
+/* Стили для диапазона дат */
+#date-range {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Добавить в конец файла */
+
+/* Стили для карточек мероприятий */
+.event-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.event-info {
+    margin-top: 10px;
+}
+
+.event-info p {
+    margin-bottom: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.event-info p:last-child {
+    border-bottom: none;
+}
+
+.event-info strong {
+    display: inline-block;
+    width: 180px;
+    color: #333;
+}
+
+/* Стили для карточек статистики (добавить в конец файла) */
+.stats-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stats-info {
+    margin-top: 10px;
+}
+
+.stats-info p {
+    margin-bottom: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.stats-info p:last-child {
+    border-bottom: none;
+}
+
+.stats-info strong {
+    display: inline-block;
+    width: 180px;
+    color: #333;
+}
+
+.stats-info a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.stats-info a:hover {
+    text-decoration: underline;
+}
+
+/* Стили для карточек с информацией */
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.info-content {
+    margin-top: 10px;
+}
+
+.info-content p {
+    margin-bottom: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-content p:last-child {
+    border-bottom: none;
+}
+
+.info-content strong {
+    display: inline-block;
+    width: 180px;
+    color: #333;
+}
+
+.info-content a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.info-content a:hover {
+    text-decoration: underline;
+}
+
+/* Стили для карточек деталей */
+.info-card {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.info-content p {
+    margin: 8px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.info-content p:last-child {
+    border-bottom: none;
+}
+
+.status-success {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Анимация открытия строки */
+.details-row {
+    transition: all 0.3s ease;
+}
+
+.stats-container {
+    margin: 20px 0;
+}
+
+.stats-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.stat-card {
+    flex: 1;
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 42px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+.stat-change {
+    font-size: 14px;
+}
+
+.stat-change.positive {
+    color: #27ae60;
+}
+
+.stats-chart {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 30px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.stats-highlights {
+    display: flex;
+    justify-content: space-around;
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.highlight-item {
+    text-align: center;
+}
+
+.highlight-value {
+    display: block;
+    font-size: 32px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.highlight-label {
+    font-size: 16px;
+    color: #7f8c8d;
+}
+
+@media (max-width: 768px) {
+    .stats-row {
+        flex-direction: column;
+    }
+
+    .stats-highlights {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
