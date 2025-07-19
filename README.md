@@ -153,6 +153,9 @@ MEPHI_Donor_DevSquad/
 - **Никифоров Данила** - Frontend Developer
 - **Пятковский Артём** - Backend Designer
 
+## Презентация
+https://www.figma.com/slides/9t0CQ3uHs6rA6k3ykpkd3B/Product-Review?node-id=0-1&t=v22qrswwPtl5jw6r-1
+
 ---
 
 🚀 **Давайте вместе делать добро с помощью технологий!** 🚀
