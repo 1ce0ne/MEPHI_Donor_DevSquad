@@ -156,6 +156,12 @@ MEPHI_Donor_DevSquad/
 ## Презентация
 https://www.figma.com/slides/dYBb79PtEnZiAbSzSYTHAd/Product-Review?node-id=1-880&t=HxqKSJPR3AqH7BrX-1
 
+## Админ бот
+@mephidonor_admin_bot
+
+## Обычный бот
+@mephidonor_bot
+
 ---
 
 🚀 **Давайте вместе делать добро с помощью технологий!** 🚀
