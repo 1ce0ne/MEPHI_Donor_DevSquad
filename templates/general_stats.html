@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Общая статистика</h1>
+
+<div class="stats-container">
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-value">{{ stats.total_donors }}</div>
+            <div class="stat-label">Всего доноров</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-value">{{ stats.total_donations }}</div>
+            <div class="stat-label">Всего донаций</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-value">{{ stats.active_events }}</div>
+            <div class="stat-label">Активных мероприятий</div>
+        </div>
+    </div>
+
+    <div class="stats-section">
+        <h2>Статистика по мероприятиям (последние 30 дней)</h2>
+        {% if event_stats %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Мероприятие</th>
+                    <th>Дата</th>
+                    <th>Центр крови</th>
+                    <th>Регистрации</th>
+                    <th>Посещения</th>
+                    <th>Посещаемость</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stat in event_stats %}
+                <tr>
+                    <td>{{ stat.event.name }}</td>
+                    <td>{{ stat.event.date.strftime('%d.%m.%Y') }}</td>
+                    <td>{{ stat.event.center }}</td>
+                    <td>{{ stat.total_registrations }}</td>
+                    <td>{{ stat.attended }}</td>
+                    <td>{{ stat.attendance_rate }}%</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>Нет данных о мероприятиях за последние 30 дней</p>
+        {% endif %}
+    </div>
+
+    <div class="stats-highlights">
+        <h2>Ключевые показатели</h2>
+        <div class="highlight-row">
+            <div class="highlight-item">
+                <span class="highlight-value">78%</span>
+                <span class="highlight-label">Повторных доноров</span>
+            </div>
+            <div class="highlight-item">
+                <span class="highlight-value">94%</span>
+                <span class="highlight-label">Успешных донаций</span>
+            </div>
+            <div class="highlight-item">
+                <span class="highlight-value">62%</span>
+                <span class="highlight-label">Посещаемость мероприятий</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

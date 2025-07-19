@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevSquad - Система управления донорами</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <nav class="sidebar">
+            <h1 class="logo">DevSquad</h1>
+            <div class="nav-section">
+                <h3>Основное</h3>
+                <ul>
+                    <li><a href="/donors" class="nav-link">Доноры</a></li>
+                    <li><a href="/mailings" class="nav-link">Рассылки</a></li>
+                    <li><a href="/events" class="nav-link">Мероприятия</a></li>
+                </ul>
+            </div>
+            <div class="nav-section">
+                <h3>Статистика</h3>
+                <ul>
+                    <li><a href="/upload_stats" class="nav-link">Загрузка статистики</a></li>
+                    <li><a href="/download_stats" class="nav-link">Выгрузка статистики</a></li>
+                    <li><a href="/general_stats" class="nav-link">Общая статистика</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <!-- Скрипт должен быть в конце body -->
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

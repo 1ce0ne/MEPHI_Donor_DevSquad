@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Мероприятия</h1>
+
+<button id="addEventBtn" class="btn btn-success">Добавить мероприятие</button>
+
+{% if events %}
+<table>
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Дата</th>
+            <th>Центр крови</th>
+            <th>Регистрации/Посещения</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for event in events %}
+        <tr>
+            <td>{{ event.event.name }}</td>
+            <td>{{ event.event.date.strftime('%d.%m.%Y') }}</td>
+            <td>{{ event.event.center }}</td>
+            <td>
+                {{ event.stats.attended }}/{{ event.stats.total_registrations }}
+                ({{ event.stats.attendance_rate }}%)
+            </td>
+            <td>
+                <button class="btn btn-primary event-details-btn" data-id="{{ event.event.id }}">Подробнее</button>
+                <button class="btn btn-info">Редактировать</button>
+            </td>
+        </tr>
+        <tr class="details-row" id="event-details-{{ event.event.id }}" style="display: none;">
+            <td colspan="5">
+                <div class="event-card">
+                    <h3>Подробная информация</h3>
+                    <div class="event-info">
+                        <p><strong>Название:</strong> {{ event.event.name }}</p>
+                        <p><strong>Адрес:</strong> {{ event.event.address }}</p>
+                        <p><strong>Дата:</strong> {{ event.event.date.strftime('%d.%m.%Y %H:%M') }}</p>
+                        <p><strong>Центр крови:</strong> {{ event.event.center }}</p>
+                        <p><strong>Описание:</strong> {{ event.event.description or 'Нет описания' }}</p>
+                        <p><strong>Слотов:</strong> {{ event.event.slots_available }}</p>
+                        <p><strong>Статус:</strong> {% if event.event.is_active %}Активно{% else %}Завершено{% endif %}</p>
+                        <p><strong>Регистрации:</strong> {{ event.stats.total_registrations }}</p>
+                        <p><strong>Посещения:</strong> {{ event.stats.attended }}</p>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Нет запланированных мероприятий</p>
+{% endif %}
+
+<div id="eventModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="card">
+            <h3>Создать новое мероприятие</h3>
+            <form id="eventForm" action="/api/event/" method="post">
+                <div class="form-group">
+                    <label for="event-name">Название:</label>
+                    <input type="text" id="event-name" name="name" placeholder="День донора" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-center">Центр крови:</label>
+                    <input type="text" id="event-center" name="center" placeholder="Центр крови №1" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-address">Адрес:</label>
+                    <input type="text" id="event-address" name="address" placeholder="ул. Доноров, 1" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-date">Дата:</label>
+                    <input type="date" id="event-date" name="event_date" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-slots">Количество слотов:</label>
+                    <input type="number" id="event-slots" name="slots" min="1" value="50" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-description">Описание:</label>
+                    <textarea id="event-description" name="description" rows="4"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success">Создать</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

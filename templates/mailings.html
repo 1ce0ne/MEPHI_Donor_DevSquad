@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Рассылки</h1>
+
+<button id="addMailingBtn" class="btn btn-success">Добавить рассылку</button>
+
+{% if mailings %}
+<table>
+    <thead>
+        <tr>
+            <th>Название рассылки</th>
+            <th>Кому</th>
+            <th>Дата рассылки</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mailing in mailings %}
+        <tr>
+            <td>{{ mailing.name }}</td>
+            <td>
+                {% if mailing.recipients == "all" %}Всем
+                {% elif mailing.recipients == "registered" %}Зарегистрированным на ДД
+                {% elif mailing.recipients == "not_registered" %}Не зарегистрированным
+                {% elif mailing.recipients == "not_attended" %}Не пришедшим на ДД
+                {% elif mailing.recipients == "bm_registry" %}Для регистра ДКМ
+                {% endif %}
+            </td>
+            <td>{{ mailing.sent_date.strftime('%d.%m.%Y') }}</td>
+            <td>
+                <button class="btn btn-primary">Статистика</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Нет данных о рассылках</p>
+{% endif %}
+
+<div id="mailingModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="card">
+            <h3>Создать новую рассылку</h3>
+            <form id="mailingForm" action="/api/mailing/" method="post">
+                <div class="form-group">
+                    <label for="mailing-name">Название рассылки:</label>
+                    <input type="text" id="mailing-name" name="name" placeholder="Напоминание о ДД" required>
+                </div>
+                <div class="form-group">
+                    <label for="mailing-text">Текст рассылки:</label>
+                    <textarea id="mailing-text" name="text" rows="4" placeholder="Дорогой донор, напоминаем..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="mailing-recipients">Кому:</label>
+                    <select id="mailing-recipients" name="recipients" required>
+                        <option value="all">Всем донорам</option>
+                        <option value="registered">Зарегистрированным на ближайшую ДД</option>
+                        <option value="not_registered">Не зарегистрированным на ДД</option>
+                        <option value="not_attended">Зарегистрировавшимся, но не пришедшим</option>
+                        <option value="bm_registry">Сдавшим пробирку для регистра ДКМ</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success">Создать рассылку</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
